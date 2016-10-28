@@ -13,10 +13,17 @@ scalacOptions ++= Seq("-Xfatal-warnings", "-feature")
 
 libraryDependencies ++= {
   Seq(
+    // slick
     "com.typesafe.slick" %% "slick" % "3.2.0-M1",
 
+    // db driver
     "com.h2database" % "h2" % "1.4.192",
 
+    // logging
+    "ch.qos.logback" % "logback-classic" % "1.1.7",
+    "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0",
+
+    // db migrations
     "org.flywaydb" % "flyway-maven-plugin" % "4.0.3"
   ) ++ Seq(
     "org.scalatest" %% "scalatest" % "3.0.0" % "test"
