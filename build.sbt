@@ -1,10 +1,4 @@
-import java.io.FileNotFoundException
-import java.nio.charset.StandardCharsets
-import java.text.SimpleDateFormat
-import java.util.Date
-
 import sbt.Keys._
-import sbt.Package.ManifestAttributes
 import sbt.Resolver
 
 name := "slick-101"
@@ -18,14 +12,12 @@ scalacOptions ++= Seq("-Xfatal-warnings", "-feature")
 
 
 libraryDependencies ++= {
-
   Seq(
     "com.typesafe.slick" %% "slick" % "3.2.0-M1",
 
-    "mysql" % "mysql-connector-java" % "5.1.30",
+    "com.h2database" % "h2" % "1.4.192",
 
-    "commons-io" % "commons-io" % "2.4",
-    "org.apache.commons" % "commons-math3" % "3.5"
+    "org.flywaydb" % "flyway-maven-plugin" % "4.0.3"
   ) ++ Seq(
     "org.scalatest" %% "scalatest" % "3.0.0" % "test"
   )
