@@ -11,3 +11,6 @@ resolvers += "sonatype-releases" at "https://oss.sonatype.org/content/repositori
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
 
 addSbtPlugin("org.wartremover" %% "sbt-wartremover" % "1.1.1")
+
+// dependency tree
+addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.2")

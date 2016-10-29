@@ -25,6 +25,8 @@ libraryDependencies ++= {
 
     // db migrations
     "org.flywaydb" % "flyway-maven-plugin" % "4.0.3"
+      exclude("org.slf4j", "slf4j-nop")
+      exclude("org.slf4j", "slf4j-jdk14")
   ) ++ Seq(
     "org.scalatest" %% "scalatest" % "3.0.0" % "test"
   )
