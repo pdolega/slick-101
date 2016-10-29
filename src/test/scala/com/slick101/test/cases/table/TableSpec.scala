@@ -1,10 +1,10 @@
-package com.slick101.test.cases
+package com.slick101.test.cases.table
 
-import com.slick101.test.BaseTest
+import com.slick101.test.{BaseTest, MemDb}
 import org.scalatest.BeforeAndAfterEach
 import slick.jdbc.H2Profile.api._
 
-class TableSpec extends BaseTest with BeforeAndAfterEach {
+class TableSpec extends BaseTest with BeforeAndAfterEach with MemDb {
 
   // table definition
 
@@ -23,27 +23,27 @@ class TableSpec extends BaseTest with BeforeAndAfterEach {
 
   // creating schema
   override protected def beforeEach {
-    blockingWait(memDb.run(UniversityTable.schema.create))
+    blockingWait(db.run(UniversityTable.schema.create))
   }
 
   // tear down schema
   override protected def afterEach {
-    blockingWait(memDb.run(UniversityTable.schema.drop))
+    blockingWait(db.run(UniversityTable.schema.drop))
   }
 
   // tests
   "Universities" must {
     // this is bad - we'll get to it later
     "be insertable and retrievable - poor version" in {
-      blockingWait(memDb.run(UniversityTable.result)) should have size 0
-      blockingWait(memDb.run(
+      blockingWait(db.run(UniversityTable.result)) should have size 0
+      blockingWait(db.run(
         UniversityTable ++= Seq(
           University("Hogwart"),
           University("Scala University")
         )
       ))
 
-      val results = blockingWait(memDb.run(UniversityTable.result))
+      val results = blockingWait(db.run(UniversityTable.result))
       results.foreach(u => log.debug(s"${u}"))
       results.map(_.name) should contain theSameElementsAs
         Seq("Hogwart", "Scala University")

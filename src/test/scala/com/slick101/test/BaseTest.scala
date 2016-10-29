@@ -10,15 +10,15 @@ import slick.jdbc.H2Profile.api._
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration.DurationLong
 
-trait BaseTest extends TestSuite with BeforeAndAfterAll with WordSpecLike with Matchers with ScalaFutures {
+trait BaseTest extends TestSuite with BeforeAndAfterAll with WordSpecLike with Matchers with ScalaFutures { self: DbInstance =>
 
   implicit val config = generateTimeoutConfig
-
-  lazy val memDb = TestEnv.db
 
   val log = Logger(getClass)
 
   protected def blockingWait[T](f: Future[T]) = Await.result(f, config.timeout.totalNanos.nanos)
+
+  protected def exec[T](dbio: DBIO[T]): Future[T] = db.run(dbio)
 
   override protected def beforeAll() = {
     super.beforeAll()
@@ -34,8 +34,6 @@ trait BaseTest extends TestSuite with BeforeAndAfterAll with WordSpecLike with M
 
 object TestEnv {
   lazy val config = ConfigFactory.load("application.conf")
-
-  lazy val db = Database.forConfig("slick101db")
 
   lazy val initialize = performInitialize
 
