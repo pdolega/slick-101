@@ -5,10 +5,13 @@ import com.typesafe.scalalogging.Logger
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Millis, Span}
 import org.scalatest.{BeforeAndAfterAll, Matchers, TestSuite, WordSpecLike}
+import slick.dbio.DBIO
+import slick.lifted.Query
 import slick.jdbc.H2Profile.api._
+import scala.language.higherKinds
 
-import scala.concurrent.{Await, Future}
 import scala.concurrent.duration.DurationLong
+import scala.concurrent.{Await, Future}
 
 trait BaseTest extends TestSuite with BeforeAndAfterAll with WordSpecLike with Matchers with ScalaFutures { self: DbInstance =>
 
@@ -18,7 +21,7 @@ trait BaseTest extends TestSuite with BeforeAndAfterAll with WordSpecLike with M
 
   protected def blockingWait[T](f: Future[T]) = Await.result(f, config.timeout.totalNanos.nanos)
 
-  protected def exec[T](dbio: DBIO[T]): Future[T] = db.run(dbio)
+  protected def querySync[E, U, C[_]](q: Query[E, U, C]) = Await.result(db.run(q.result), 2.seconds)
 
   override protected def beforeAll() = {
     super.beforeAll()
