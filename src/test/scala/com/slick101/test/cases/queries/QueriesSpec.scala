@@ -1,7 +1,6 @@
-import com.slick101.test.cases.queries.CourseModel._
+import com.slick101.test.cases.queries.CourseModel.{StudentTable, _}
 import com.slick101.test.{BaseTest, ServerDb}
 import slick.jdbc.H2Profile.api._
-import slick.lifted
 import slick.lifted.Functions._
 import com.slick101.test.cases.conversation.TypesafeId._
 
@@ -46,6 +45,7 @@ class QueriesSpec extends BaseTest with ServerDb {
       projections
       filtering
       otherQueries
+      composition
     }
   }
 
@@ -94,10 +94,19 @@ class QueriesSpec extends BaseTest with ServerDb {
     )
   }
 
+  def myExtractedFilter(row: StudentTable): Rep[Boolean] = {
+    row.name === "Tom" && row.nationality === "American"
+  }
+
   def filtering {
     log.info("=== Select with filter")
     querySync(
       StudentTable.filter(_.name === "Tom")
+    )
+
+    log.info("=== Extracted query")
+    querySync(
+      StudentTable.filter(myExtractedFilter)
     )
 
     log.info("=== Select with filter / for-comprehension")
@@ -170,5 +179,29 @@ class QueriesSpec extends BaseTest with ServerDb {
         }
         .filter(row => row._2 > 5)
     )
+  }
+
+  def composition: Unit = {
+    log.info("More complicated composition")
+    blockingWait(
+      db.run(
+        for {
+          students <- StudentTable.result
+          multipleResults <- DBIO.sequence(students.map(fetchMoreData))
+        } yield {
+          multipleResults
+        }
+      )
+    )
+  }
+
+  private def fetchMoreData(student: Student): DBIO[Seq[Course]] = {
+    log.info(s"Nested query for ${student.id}")
+    (for {
+      segment <- StudentCourseSegmentTable if segment.studentId === student.id
+      course <- segment.course
+    } yield {
+      course
+    }).result
   }
 }
