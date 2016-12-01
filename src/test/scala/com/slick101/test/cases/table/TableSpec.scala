@@ -3,7 +3,7 @@ package com.slick101.test.cases.table
 import com.slick101.test.{BaseTest, MemDb}
 import org.scalatest.BeforeAndAfterEach
 import slick.dbio
-import slick.jdbc.H2Profile.api._
+import slick.driver.H2Driver.api._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future

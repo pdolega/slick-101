@@ -1,8 +1,11 @@
 package com.slick101.test.cases.queries
 
-import com.slick101.test.cases.conversation.Id
-import slick.jdbc.H2Profile.api._
+import java.util.UUID
+
+import com.slick101.test.cases.conversation.{Id, TypesafeId}
 import com.slick101.test.cases.conversation.TypesafeId._
+import slick.driver.H2Driver.api._
+import slick.profile.SqlProfile.ColumnOption.SqlType
 
 object CourseModel {
 
@@ -11,6 +14,7 @@ object CourseModel {
                      middleName: Option[String],
                      surname: String,
                      nationality: String,
+                     uuid: UUID,
                      id: Id[Student] = Id.none)
 
   class StudentTable(tag: Tag) extends Table[Student](tag, "STUDENT") {
@@ -18,9 +22,10 @@ object CourseModel {
     def middleName = column[Option[String]]("MIDDLE_NAME")
     def surname = column[String]("SURNAME")
     def nationality = column[String]("NATIONALITY")
+    def uuid = column[UUID]("UUID", SqlType("VARCHAR"))(TypesafeId.columnTypeUUID)
     def id = column[Id[Student]]("ID", O.PrimaryKey, O.AutoInc)
 
-    def * = (name, middleName, surname, nationality, id) <> (Student.tupled, Student.unapply)
+    def * = (name, middleName, surname, nationality, uuid, id) <> (Student.tupled, Student.unapply)
   }
 
   lazy val StudentTable = TableQuery[StudentTable]

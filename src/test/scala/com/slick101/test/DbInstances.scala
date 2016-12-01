@@ -1,7 +1,7 @@
 package com.slick101.test
 
 import org.flywaydb.core.Flyway
-import slick.jdbc.H2Profile.api._
+import slick.driver.H2Driver.api._
 
 trait DbInstance {
   val db: Database

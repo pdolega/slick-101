@@ -3,7 +3,8 @@ CREATE TABLE student (
     name VARCHAR(100) NOT NULL,
     middle_name VARCHAR(100),
     surname VARCHAR(100) NOT NULL,
-    nationality VARCHAR(100) NOT NULL
+    nationality VARCHAR(100) NOT NULL,
+    uuid VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE document (

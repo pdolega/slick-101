@@ -7,7 +7,7 @@ import org.scalatest.time.{Millis, Span}
 import org.scalatest.{BeforeAndAfterAll, Matchers, TestSuite, WordSpecLike}
 import slick.dbio.DBIO
 import slick.lifted.Query
-import slick.jdbc.H2Profile.api._
+import slick.driver.H2Driver.api._
 import scala.language.higherKinds
 
 import scala.concurrent.duration.DurationLong

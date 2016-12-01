@@ -1,6 +1,8 @@
 package com.slick101.test.cases.conversation
 
-import slick.jdbc.H2Profile.api._
+import java.util.UUID
+
+import slick.driver.H2Driver.api._
 
 case class Id[T](value: Long)
 
@@ -15,4 +17,12 @@ object TypesafeId {
   private def fromLong[T](dbId: Long): Id[T] = Id(dbId)
 
   private def toLong[T](id: Id[T]): Long = id.value
+
+
+  implicit def columnTypeUUID: BaseColumnType[UUID] =
+    MappedColumnType.base[UUID, String](toString, fromString)
+
+  private def fromString(dbId: String): UUID = UUID.fromString(dbId)
+
+  private def toString(id: UUID): String = id.toString
 }

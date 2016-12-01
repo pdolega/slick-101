@@ -1,7 +1,7 @@
 package com.slick101.test.cases.smoke
 
 import com.slick101.test.{BaseTest, MemDb, TestEnv}
-import slick.jdbc.H2Profile.api._
+import slick.driver.H2Driver.api._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 

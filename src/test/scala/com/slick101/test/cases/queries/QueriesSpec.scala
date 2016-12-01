@@ -1,6 +1,6 @@
 import com.slick101.test.cases.queries.CourseModel.{StudentTable, _}
 import com.slick101.test.{BaseTest, ServerDb}
-import slick.jdbc.H2Profile.api._
+import slick.driver.H2Driver.api._
 import slick.lifted.Functions._
 import com.slick101.test.cases.conversation.TypesafeId._
 

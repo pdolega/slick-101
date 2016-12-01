@@ -1,14 +1,14 @@
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (1, 'Tom', NULL, 'Smith', 'American');
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (2, 'Mike', NULL, 'Williamns', 'American');
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (3, 'Michał', NULL, 'Nowak', 'Polish');
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (4, 'Mikhail', NULL, '', 'Russian');
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (5, 'Bart', NULL, 'Simpson', 'American');
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (6, 'Richard', NULL, 'White', 'English');
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (7, 'Henry', NULL, 'Yellow', 'English');
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (8, 'Grzegorz', 'Jędrzej', 'Kowalski', 'Polish');
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (9, 'Simon', NULL, 'Allard', 'French');
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (10, 'Brian', 'Ronald', 'Clark', 'American');
-INSERT INTO student(id, name, middle_name, surname, nationality) VALUES (11, 'Mario', NULL, 'Vario', 'Italian');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (1, 'Tom', NULL, 'Smith', 'American', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (2, 'Mike', NULL, 'Williamns', 'American', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (3, 'Michał', NULL, 'Nowak', 'Polish', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (4, 'Mikhail', NULL, '', 'Russian', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (5, 'Bart', NULL, 'Simpson', 'American', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (6, 'Richard', NULL, 'White', 'English', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (7, 'Henry', NULL, 'Yellow', 'English', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (8, 'Grzegorz', 'Jędrzej', 'Kowalski', 'Polish', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (9, 'Simon', NULL, 'Allard', 'French', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (10, 'Brian', 'Ronald', 'Clark', 'American', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
+INSERT INTO student(id, name, middle_name, surname, nationality, uuid) VALUES (11, 'Mario', NULL, 'Vario', 'Italian', 'fa56f0f4-94c6-4c2d-9d2c-84714084cafe');
 
 
 INSERT INTO document(student_id, name, uuid) VALUES(1, 'Passport', '123e4567-e89b-13d3-a456-426655440000');

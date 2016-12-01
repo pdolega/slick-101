@@ -1,9 +1,11 @@
 package com.slick101.test.cases.queries
 
+import java.util.UUID
+
 import com.slick101.test.cases.conversation.Id
 import com.slick101.test.cases.queries.CourseModel._
 import com.slick101.test.{BaseTest, ServerDb}
-import slick.jdbc.H2Profile.api._
+import slick.driver.H2Driver.api._
 import com.slick101.test.cases.conversation.TypesafeId._
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -57,6 +59,17 @@ class JoinQueriesSpec extends BaseTest with ServerDb {
   }
 
   "various other queries" should {
+    "uuid" in {
+      db.run(
+        for {
+          _ <- (StudentTable += Student("name", None, "ddd", "aabb", UUID.randomUUID()))
+          student <- StudentTable.filter(_.name === "name").result
+        } yield {
+          println(student)
+        }
+      ).futureValue
+    }
+
     "work nice too" in {
       log.info("Simple outer join")
       querySync(
