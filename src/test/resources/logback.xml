@@ -11,6 +11,7 @@
   <logger name="slick.jdbc.JdbcBackend.benchmark" level="DEBUG" />
   <logger name="slick.jdbc.JdbcBackend.statement" level="DEBUG" />
   <logger name="slick.jdbc.StatementInvoker.result" level="DEBUG" />
+  <logger name="slick.jdbc.JdbcBackend.parameter" level="DEBUG" />
   <!--<logger name="slick.compiler.QueryCompilerBenchmark" level="DEBUG" />-->
 
   <logger name="com.zaxxer.hikari" level="WARN" />
