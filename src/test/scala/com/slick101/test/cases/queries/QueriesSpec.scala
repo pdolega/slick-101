@@ -175,7 +175,7 @@ class QueriesSpec extends BaseTest with ServerDb {
         .filter(_.surname =!= "Test")
         .groupBy(_.surname)
         .map { case (surname, group) =>
-          (surname, group.map(_.name).countDistinct)
+          (surname, group.map(_.name).length)
         }
         .filter(row => row._2 > 5)
     )

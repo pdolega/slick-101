@@ -5,7 +5,7 @@ name := "slick-101"
 
 version := "1.0-SNAPSHOT"
 
-scalaVersion := "2.12.0-M5"
+scalaVersion := "2.12.0"
 
 // no more lame code
 scalacOptions ++= Seq("-Xfatal-warnings", "-feature", "-deprecation")
@@ -14,7 +14,7 @@ scalacOptions ++= Seq("-Xfatal-warnings", "-feature", "-deprecation")
 libraryDependencies ++= {
   Seq(
     // slick
-    "com.typesafe.slick" %% "slick" % "3.2.0-M1",
+    "com.typesafe.slick" %% "slick" % "3.2.0-M2",
 
     // db driver
     "com.h2database" % "h2" % "1.4.192",
