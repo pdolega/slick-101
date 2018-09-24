@@ -8,9 +8,9 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 resolvers += "sonatype-releases" at "https://oss.sonatype.org/content/repositories/releases/"
 
 // code quality
-addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
+addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 
-addSbtPlugin("org.wartremover" %% "sbt-wartremover" % "1.2.1")
+addSbtPlugin("org.wartremover" %% "sbt-wartremover" % "2.3.7")
 
 // dependency tree
-addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.2")
+addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.9.2")
